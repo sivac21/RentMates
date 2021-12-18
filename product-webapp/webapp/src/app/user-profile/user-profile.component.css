@@ -1,0 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap');
+
+
+.profile-image{
+    max-width:  350px; 
+    max-height: 250px;  
+}
+
+.container-fluid{
+    width: 100%;
+    padding: 20px 0;
+    height: 100%;
+}
+
+
+h1{
+    font-family: 'Nunito', sans-serif;
+    font-weight: bolder;
+    font-size: 40px;
+}
+
+p{
+    font-family: 'Nunito', sans-serif;
+    margin-left: 10px;
+}
+
+.mat-chip{
+    background-color: #2196f3;
+    color: #fff;
+}
+
+.info-icons-styling{
+    color: #2196f3;
+}

@@ -1,0 +1,62 @@
+<div class="background-styling">
+    <img src="https://images.pexels.com/photos/697224/pexels-photo-697224.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="" style="height: 100%; width: 100%;">
+    <div class="container">
+        <div fxLayout="row" class="shadow-box">
+            <div fxLayout="column" fxFlex="50%" class="red-grad-1-background-color" style="padding: 30px;">
+                <div style="text-align: center;">
+                    <h1 class="mat-display-3 nunito-font" style="font-weight: bold; letter-spacing: 1px; margin-top: 10vh;">
+                        Rentmates</h1>
+                    <p class="mat-display-1 nunito-font">"Find your Perfect Roommate..."</p>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="center center">
+                    <a routerLink="/">
+                        <mat-icon style="margin-top: 80px;">home</mat-icon>
+                        <!-- <span class="nunito-font" style="margin-left: 20px; margin-bottom: ;">Go back to home</span> -->
+                    </a>
+
+                </div>
+                <div fxLayout="row" fxLayoutAlign="center center">
+                    <div fxLayout="column">
+                        <!-- <button mat-button class="ghost nunito-font" (click)="registerclick()">Register as Tenant</button> -->
+                        <p style="font-size: 16px;">Click here to <a routerLink="/register">Register as Tenant</a> </p>
+                    </div>
+                    <div fxLayout="column">
+                        <!-- <button mat-button class="ghost nunito-font" (click)="registerownerclick()">Register as Property Owner</button> -->
+                        <p style="font-size: 16px;">,or <a routerLink="/register-owner">Register as Owner</a></p>
+                    </div>
+                </div>
+            </div>
+
+            <div fxLayout="column" fxFlex="50%" style="background-color: #fff; padding: 30px;">
+                <div style="text-align: center;">
+                    <h1 class="mat-display-3 nunito-font" style="font-weight: bold; letter-spacing: 1px;">Login</h1>
+                    <button mat-button class=" google-button-styling" (click)="login()"><i class="fab fa-google"></i></button>
+                    <p class="mat-h2" nunito-font>or login using your email</p>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="center center">
+                    <div [formGroup]="loginSection" fxLayout="column" style="width: 70%;">
+                        <mat-form-field appearance="outline">
+                            <mat-label class="nunito-font">Enter your email</mat-label>
+                            <input matInput placeholder="pat@example.com" formControlName="email">
+                            <mat-error>Email is required</mat-error>
+                        </mat-form-field>
+
+                        <!-- <div> -->
+                        <mat-form-field appearance="outline" fxFlex="100%">
+                            <mat-label class="nunito-font">Password</mat-label>
+
+                            <input matInput #input type="password" placeholder="password" formControlName="password">
+                            <mat-error>Password is required</mat-error>
+
+                        </mat-form-field>
+                        <!-- </div> -->
+                    </div>
+                </div>
+                <div class="row " fxLayoutAlign="center center" style="margin-top: -60px;">
+                    <button mat-button (click)="onLogIn()" style="margin-top: 10%; margin-bottom: 10%;" class="nunito-font">Login</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

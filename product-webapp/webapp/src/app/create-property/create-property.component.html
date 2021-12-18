@@ -1,0 +1,368 @@
+<!-- 
+<div fxLayout="row">
+    <div fxLayout="column" fxLayoutGap="2%" fxFlex="50%">
+        <div fxLayout="row" fxLayout.xs="column">
+
+            <div fxFlex="20%">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis assumenda odit dicta vitae odio quasi
+                beatae
+                molestiae ad officiis culpa repellendus qui debitis veritatis blanditiis sequi dolorum minima sit,
+                asperiores
+                atque veniam recusandae incidunt.
+            </div>
+            <div fxFlex="50%">
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum est quod repellat, expedita ratione
+                assumenda.
+            </div>
+            <div>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, inventore ad quae aliquam sed in beatae,
+                voluptatem suscipit doloribus ullam excepturi. Laboriosam, quo. Tempore repudiandae esse quod delectus
+                accusantium in.
+            </div>
+        </div>
+        <div fxLayout="row">
+            <div fxFlex="70%"> Hello Rohit</div>
+            <div>Basketball</div>
+
+        </div>
+    </div>
+
+    <div>
+        Second c6,olumn
+    </div>
+</div> -->
+
+<hr>
+<div fxLayout="row" class="maintag">
+    <div  fxFlex="20%" fxHide fxShow.gt-xs fxLayout="column" fxLayoutGap="15%"
+        style="background-image: url(../../assets/p3.jpg); ">
+        <div></div>
+        <div class="sell"> <b>Rent</b> </div>
+        <div class="sell"> <b>Your property</b> </div>
+        <div class="sell"><b> on</b></div>
+        <div class="sell"> <b> RentMates</b></div>
+    </div>
+
+
+    <div fxFlex="80%" fxFlex.xs="100%">
+
+        <mat-card>
+            <div fxLayout="row" fxLayoutGap="12%" fxLayout.xs="column">
+                <div><img src="../../assets/p2.png" alt="RentMate" width="80%" height="80%"></div>
+                <div>
+                    <h1><b>Tell us about your property</b></h1>
+                </div>
+            </div>
+            <div [formGroup]="propertyFormGroup">
+
+                <!-- Stepper started -->
+
+                <mat-horizontal-stepper class="stepper">
+
+                    <!-- Room details -->
+                    <mat-step label="Room details" completed=true>
+                        <div fxLayout="row" fxLayoutGap="2%" fxLayout.xs="column" class="mat1">
+
+                            <mat-form-field appearance="outline" fxFlex="50%" fxLayout.xs="column">
+                                <mat-label>Property Name</mat-label>
+                                <input matInput placeholder="Enter Property Name " formControlName="propertyName">
+                            </mat-form-field>
+
+
+
+                            <mat-form-field appearance="outline" fxFlex="50%">
+
+                                <mat-label>Room Type </mat-label>
+                                <mat-select formControlName="roomType">
+                                    <mat-option *ngFor="let food of foods" [value]="food.value">
+                                        {{food.viewValue}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                        <div fxLayout="row" fxLayoutGap="2%" fxLayout.xs="column">
+
+                            <mat-form-field appearance="outline" fxFlex="50%">
+                                <mat-label>Expected Rent</mat-label>
+                                <input matInput placeholder="Enter Amount  " formControlName="expectedRent">
+                            </mat-form-field>
+
+                            <mat-form-field appearance="outline" fxFlex="50%">
+                                <mat-label>Advanced Deposite</mat-label>
+                                <input matInput placeholder="Enter Amount" formControlName="advancedDeposit">
+                            </mat-form-field>
+
+                        </div>
+                        <h4 style="color:#089975">Room Amenities *</h4>
+
+                        <div fxLayout="row" fxLayoutGap="10%" fxLayout.xs="column">
+                            <div>
+                                <mat-checkbox formControlName="cupboard">Cupboard </mat-checkbox>
+                            </div>
+                            <div>
+                                <mat-checkbox formControlName="tv">TV</mat-checkbox>
+                            </div>
+                            <div>
+                                <mat-checkbox formControlName="ac">AC</mat-checkbox>
+                            </div>
+                            <div>
+                                <mat-checkbox formControlName="geyser">Geyser </mat-checkbox>
+                            </div>
+                            <div>
+                                <mat-checkbox formControlName="bedding">Bedding </mat-checkbox>
+                            </div>
+                        </div>
+                        <br><br>
+                        <div>
+                            <button mat-raised-button matStepperNext class="button">Next</button>
+                        </div>
+                    </mat-step>
+
+
+                    <!-- Location details -->
+
+
+                    <mat-step label="Location details" completed=true>
+
+                        <div fxLayout="row" fxLayoutGap="2%" fxLayout.xs="column">
+
+                            <mat-form-field appearance="outline" fxFlex="33%">
+                                <mat-label>City</mat-label>
+                                <input matInput placeholder="City" formControlName="city">
+                            </mat-form-field>
+
+                            <mat-form-field appearance="outline" fxFlex="33%">
+                                <mat-label>State</mat-label>
+                                <input matInput placeholder="State" formControlName="state">
+                            </mat-form-field>
+
+                            <mat-form-field appearance="outline" fxFlex="33%">
+                                <mat-label>Locality/Street</mat-label>
+                                <input matInput placeholder="Locality/Street" formControlName="locality">
+                            </mat-form-field>
+
+                        </div>
+
+                        <div fxLayout="row" fxLayoutGap="2%" fxLayout.xs="column">
+
+                            <mat-form-field fxFlex="66%" appearance="outline">
+                                <mat-chip-list #chipList>
+                                    <mat-chip *ngFor="let nearByPlace of nearByPlaces" [selectable]="selectable"
+                                        [removable]="removable" (removed)="remove(nearByPlace)">
+                                        {{ nearByPlace }}
+                                        <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                                    </mat-chip>
+                                    <input placeholder="Enter Near By Location" #nearByPlaceInput
+                                        [formControl]="nearByPlaceCtrl" [matAutocomplete]="auto"
+                                        [matChipInputFor]="chipList"
+                                        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                                        [matChipInputAddOnBlur]="addOnBlur" (matChipInputTokenEnd)="addnearByPlace($event)"
+                                        formControlName="nearByPlaces" />
+                                </mat-chip-list>
+                                <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+                                </mat-autocomplete>
+                            </mat-form-field>
+
+                            <mat-form-field appearance="outline" fxFlex="32%">
+                                <mat-label>Contact Number</mat-label>
+                                <input matInput placeholder="Enter Contact Number" formControlName="ownerContactNumber">
+                            </mat-form-field>
+
+
+                        </div>
+
+                        <br>
+                        <div>
+                            <button mat-raised-button matStepperPrevious class="button">Back</button>
+                            <button mat-raised-button matStepperNext style="margin-left: 5%;"
+                                class="button">Next</button>
+                        </div>
+                    </mat-step>
+
+
+
+
+                    <!-- PG details -->
+
+                    <mat-step label="PG details" completed=true>
+                        <div fxLayout="row" fxLayoutGap="2%" fxLayout.xs="column">
+
+                            <mat-form-field appearance="outline" fxFlex="50%">
+
+                                <mat-label>Place available for</mat-label>
+                                <mat-select formControlName="placeAvailableFor">
+                                    <mat-option *ngFor="let gender of genders" [value]="gender.value">
+                                        {{gender.viewValue}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+
+                            <mat-form-field appearance="outline" fxFlex="50%">
+
+                                <mat-label>Preferred Tenant</mat-label>
+                                <mat-select formControlName="preferredTenant">
+                                    <mat-option *ngFor="let work of works" [value]="work.value">
+                                        {{work.viewValue}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+
+                        </div>
+
+
+                        <div fxLayout="row" fxLayoutGap="2%" fxLayout.xs="column">
+
+                            <mat-form-field appearance="outline" fxFlex="50%">
+
+                                <mat-label>Food Available</mat-label>
+                                <mat-select formControlName="foodAvailability">
+                                    <mat-option *ngFor="let fod of fods" [value]="fod.value">
+                                        {{fod.viewValue}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+
+
+                            <mat-form-field appearance="outline" fxFlex="50%">
+                                <mat-label>Place available from</mat-label>
+                                <input matInput [matDatepicker]="picker" formControlName="availableFrom">
+                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>
+                            </mat-form-field>
+
+
+                        </div>
+
+                        <div fxLayout="row" fxLayoutGap="8%" fxLayout.xs="column">
+                            <div style="color:#089975">
+                                Rules
+                            </div>
+                            <div>
+                                <mat-checkbox formControlName="smoking">Smoking </mat-checkbox>
+                            </div>
+                            <div>
+                                <mat-checkbox formControlName="girlsEntry">No girls entry</mat-checkbox>
+                            </div>
+                            <div>
+                                <mat-checkbox formControlName="nonVeg">No non-veg</mat-checkbox>
+                            </div>
+                            <div>
+                                <mat-checkbox formCntrolName="drinking">No drinking </mat-checkbox>
+                            </div>
+                            <div>
+                                <mat-checkbox formControlName="guardianStay">No guardian stay</mat-checkbox>
+                            </div>
+                        </div>
+                        <div><br>
+                            <div fxLayout="row" fxLayoutGap="4%">
+                                <div> <button mat-raised-button matStepperPrevious class="button">Back</button></div>
+                                <div> <button mat-raised-button matStepperNext class="button">Next</button></div>
+                            </div>
+                        </div>
+                    </mat-step>
+
+
+                    <!-- Amenities -->
+
+
+
+                    <mat-step label="Amenities" completed=true>
+                        <div fxLayout="row" fxLayoutGap="2%" fxLayout.xs="column">
+                            <mat-form-field appearance="outline" fxFlex="33%">
+
+                                <mat-label>Laundary</mat-label>
+                                <mat-select formControlName="laundary">
+                                    <mat-option *ngFor="let laundary of laundarys" [value]="laundary.value">
+                                        {{laundary.viewValue}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                            <mat-form-field appearance="outline" fxFlex="33%">
+
+                                <mat-label>Room cleaning</mat-label>
+                                <mat-select formControlName="roomCleaningService">
+                                    <mat-option *ngFor="let room of rooms" [value]="room.value">
+                                        {{room.viewValue}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                            <mat-form-field appearance="outline" fxFlex="33%">
+
+                                <mat-label>Parking</mat-label>
+                                <mat-select formControlName="parking">
+                                    <mat-option *ngFor="let parking of parkings" [value]="parking.value">
+                                        {{parking.viewValue}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+
+
+                        </div>
+
+                        <div>
+                            <h4 style="color:#089975"> Available Amenities :</h4>
+                        </div>
+
+                        <div fxLayout="column" fxLayoutGap="3%">
+                            <div fxLayout="row" fxLayoutGap="9%" fxLayout.xs="column">
+
+
+                                <div>
+                                    <mat-checkbox formControlName="commonTv">Common TV </mat-checkbox>
+                                </div>
+                                <div>
+                                    <mat-checkbox formControlName="powerBackup">Power backup</mat-checkbox>
+                                </div>
+                                <div>
+                                    <mat-checkbox formControlName="wifi">WiFi</mat-checkbox>
+                                </div>
+                                <div>
+                                    <mat-checkbox formControlName="gym">Gym</mat-checkbox>
+                                </div>
+                                <div>
+                                    <mat-checkbox formControlName="refrigerator">Refrigerator</mat-checkbox>
+                                </div>
+                                <div>
+                                    <mat-checkbox formControlName="lift">Lift</mat-checkbox>
+                                </div>
+                            </div>
+
+                            <div fxLayout="row" fxLayoutGap="3%">
+                                <div> <button mat-raised-button matStepperPrevious class="button">Back</button></div>
+                                <div><button mat-raised-button matStepperNext class="button">Next</button></div>
+                            </div>
+                        </div>
+                    </mat-step>
+
+
+                    <!-- Gallery -->
+
+
+                    <mat-step label="Gallery" completed=true>
+                        <div fxLayout="column" fxLayoutGap="4%">
+                            <div>
+                                <label for="choose-file" style="color:#089975">Upload Property Photos</label>
+                            </div>
+                            <div>
+                               
+                                <input type="file" id="choose-file" size="80" multiple formControlName="image" (change)="onFileChanged($event.target.files)" #fileInput>
+                            </div>
+
+                            <div>
+                                <button mat-raised-button matStepperPrevious class="button">Back</button>
+                            </div>
+                        </div>
+                    </mat-step>
+
+                </mat-horizontal-stepper>
+            </div>
+            <!-- </form> -->
+            <div align="end">
+                <button mat-raised-button class="postbutton" (click)="postNewProperty()"
+                    [disabled]="propertyFormGroup.invalid">Post Property</button>
+            </div>
+        </mat-card>
+
+    </div>
+</div>
+

@@ -1,0 +1,209 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap');
+
+.centre-align{
+    align-content: center;
+}
+
+.nunito-font{
+    font-family: 'Nunito', sans-serif;
+}
+
+.header-styling{
+    font-family: 'Outfit', sans-serif;
+    font-size: 50px;
+    color: rgb(54, 54, 54);
+}
+
+.header-styling-left{
+    font-family: 'Outfit', sans-serif;
+    font-size: 40px;
+    color: white;
+}
+
+.header-styling-left-main{
+    font-family: 'Outfit', sans-serif;
+    margin-top: 5vh;
+    font-size: 80px;
+    color: white;
+}
+
+
+.border{
+    border-color: red;
+    border-style: dotted;
+    border-width: 2px;
+}
+
+
+
+.body-background-color{
+    background-color: #393931
+}
+
+.card-left-border{
+    border-top-left-radius: 5%;
+    border-bottom-left-radius: 5%;
+}
+
+.login-card{
+    margin-right: 10%;
+    margin-left: 10%;
+}
+
+
+.container{
+    width: 90%;
+    padding: 2%;
+    font-family: 'Montserrat', sans-serif;
+    border-radius: 20px;
+    flex-direction: column;
+    justify-content: center;
+	align-items: center;
+}
+
+.container{
+    border-radius: 20px;
+}
+
+.shadow-box{
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.red-grad-1-background-color{
+    background:#ff416c;
+    background: linear-gradient(to right, #ff4b2b, #ff416c) no-repeat 0 0 / cover;
+    color: #fff;
+}
+
+mat-icon{
+    color: #fff;
+}
+
+.mat-icon:hover{
+    color: #fbff00;
+}
+
+a:hover{
+    color: #fbff00;
+}
+
+a{
+    color: #fff;
+    text-decoration: underline;
+}
+
+h1{
+    font-weight: bold;
+    margin: 0;
+}
+
+p{
+    font-size: 14px;
+    font-weight: 100;
+    line-height: 20px;
+    letter-spacing: 0.5px;
+    margin: 20px 0 30px;
+}
+
+span{
+    font-size: 12px;
+}
+
+button{
+    border-radius: 30px;
+	border: 1px solid #ff4b2b;
+	background-color: #ff4b2b;
+	color: #FFFFFF;
+	font-size: 20px;
+	font-weight: bold;
+	padding: 12px 45px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	transition: transform 80ms ease-in;
+}
+
+button:active {
+	transform: scale(0.95);
+}
+
+button.ghost{
+    padding: 10px 15px;
+    margin: 5px;
+    background: transparent;
+    border-color: #fff;
+    font-size: 15px;
+}
+
+button.ghost p{
+    font-weight: 20;
+}
+
+.red-house-image{
+    position: absolute;
+    left: 0.4vw;
+    top: 25vh;
+    width: 35%;
+}
+
+.google-button-styling{
+    border-radius: 60%;
+    padding: 0px;
+    color: black;
+    background: transparent;
+    border: 1px solid black;
+    transition: transform 80ms ease-in;
+}
+
+.google-button-styling:active{
+    
+	transform: scale(0.95);
+}
+
+.mat-icon{
+    font-size:35px;
+}
+
+.container{
+    user-select: none;
+}
+.background-styling{
+    height: 100%;
+}
+
+@media only screen and (min-width: 1367px) {
+
+    .container{
+        position: absolute;
+        top:100px;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        
+        margin: auto;
+    }
+  }
+
+  @media only screen and (max-width: 1366px) {
+
+    .container{
+        position: absolute;
+        top:20px;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        
+        margin: auto;
+    }
+  }
+
+@media only screen and (max-width: 1279px) {
+    button.ghost{
+        padding: 5px 10px;
+        margin: 5px;
+        background: transparent;
+        border-color: #fff;
+        font-size: 10px;
+    }
+
+   
+  }

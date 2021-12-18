@@ -1,0 +1,129 @@
+/*---------------------------------------*/
+
+
+/* Font */
+
+
+/*---------------------------------------*/
+
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+/* body {
+    background: linear-gradient(to right, #78a7ba 0%, #385D6C 50%, #78a7ba 99%);
+} */
+
+
+/*---------------------------------------*/
+
+
+/* Header */
+
+
+/*---------------------------------------*/
+
+.header {
+    margin-top: 1%;
+    width: 94%;
+    margin-left: 40px;
+    height: 100px;
+    /* border: 1px solid #cccccc; */
+    background-color: #eeeeee;
+}
+
+.header .text {
+    padding-top: 0.5%;
+}
+
+.body {
+    /* margin-left: 8px; */
+}
+
+.group {
+    margin-bottom: 20px;
+}
+
+.horizontal-group .left {
+    margin-top: 3%;
+    float: left;
+    width: 19%;
+}
+
+.horizontal-group .right {
+    margin-top: 3%;
+    float: right;
+    width: 79%;
+    padding-left: 10%;
+}
+
+.image {
+    height: 300px;
+    width: 350px;
+    /* border: 1px solid #cccccc; */
+    margin-bottom: 10px;
+}
+
+.details {
+    margin-left: 1%;
+    height: 400px;
+    width: 820px;
+    /* background-color: rgba(179, 179, 179, 0.863); */
+    /* border: 1px solid #cccccc; */
+}
+
+.body-details {
+    margin-left: 1%;
+    /* margin-top: 1%; */
+}
+
+.body-details td {
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.body-details label {
+    font-size: 18px;
+    font-weight: 400;
+    color: #666;
+}
+
+.body-details th {
+    font-size: 16px;
+    font-weight: 700;
+    color: #666;
+}
+
+.body-details th,
+td {
+    text-align: center;
+    padding: 5px;
+}
+
+.colour {
+    background-color: #eeeeee;
+    border-radius: 5px;
+}
+
+.placement {
+    margin-left: 5px;
+    margin-top: 5px;
+}
+
+.mat-h1 {
+    margin-bottom: 0px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.mat-h2 {
+    margin-bottom: 0px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.checked {
+    color: orange;
+}
+
+button {
+    background-color: #4B8886;
+}

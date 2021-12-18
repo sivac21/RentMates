@@ -1,0 +1,28 @@
+.button{
+   background-color: darkgray
+}
+
+.postbutton{
+    background-color: #4B8886 ;
+}
+
+.mat-card{
+    
+   border: firebrick;
+  
+}
+
+.sell{
+    font-size: 300%;
+    align-items: center;
+    font: bold;
+    font-family: 'Anton', sans-serif;
+    
+}
+.maintag{
+    user-select: none;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+

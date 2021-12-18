@@ -1,0 +1,60 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit&display=swap" rel="stylesheet">
+
+<div class="background-styling">
+    <img src="https://images.pexels.com/photos/697224/pexels-photo-697224.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="" style="height: 100%; width: 100%;">
+    <div class="container">
+        <div fxLayout="row" class="shadow-box box">
+            <div fxLayout="column" fxFlex="50%" class="red-grad-1-background-color" style="padding: 30px;">
+                <div style="text-align: center;">
+                    <h1 class="mat-display-3 nunito-font" style="font-weight: bold; letter-spacing: 1px; margin-top: 5vh;">Rentmates</h1>
+                    <p class="mat-display-1 nunito-font">"Find your Perfect Roommate..."</p>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="center center">
+                    <a routerLink="/">
+                        <mat-icon style="margin-top: 70px;">home</mat-icon>
+                    </a>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="center center">
+                    <div fxLayout="column">
+                        <button mat-button class="ghost nunito-font" (click)="loginclick()">Login</button>
+                    </div>
+
+                </div>
+
+            </div>
+            <div fxLayout="column" fxFlex="50%" style="background-color: #fff; padding: 30px;">
+                <div style="text-align: center;">
+                    <h1 class="mat-display-2 nunito-font" style="font-weight: bold;">Register as Property Owner</h1>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="center center">
+                    <div [formGroup]="registerSection" fxLayout="column" style="width: 70%;">
+                        <mat-form-field appearance="outline">
+                            <mat-label class="nunito-font">Enter your email</mat-label>
+                            <input matInput placeholder="pat@example.com" formControlName="email">
+                            <mat-error>Email is required</mat-error>
+                        </mat-form-field>
+
+                        <!-- <div> -->
+                        <mat-form-field appearance="outline" fxFlex="100%">
+                            <mat-label class="nunito-font">Password</mat-label>
+
+                            <input matInput #input type="password" placeholder="password" formControlName="password">
+                            <mat-hint>Password Must be 2 Uppercase, 3 lowercase, 1 special character and 2 numbers</mat-hint>
+                            <mat-error>Password is required</mat-error>
+
+                        </mat-form-field>
+
+
+                        <!-- </div> -->
+                    </div>
+                </div>
+                <div class="row" fxLayoutAlign="center center" style="margin-top: -60px;">
+                    <button mat-button (click)="onRegister()" style="margin-top: 20%;" class="nunito-font">Register</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

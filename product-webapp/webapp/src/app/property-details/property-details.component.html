@@ -1,0 +1,196 @@
+<div>
+    <!-- header -->
+    <div class="header">
+        <div class="text">
+            <div class="placement" fxLayout="row">
+                <div fxFlex="5%">
+                    <mat-icon style="font-size: 40px; margin-left: 12%;">house</mat-icon>
+                </div>
+                <div fxLayout="column" fxFlex="25%">
+                    <div class="mat-h1">
+                        {{propertyDetails?.propertyName}}
+                    </div>
+                    <div class="mat-subtitle" style="font-size: 14px;">
+                        {{ propertyDetails?.locality }}, {{propertyDetails?.city}}, {{propertyDetails?.state}}
+                    </div>
+                    <div style="margin-top: 3%; font-weight: 500; font-size: 15px;">
+                        Contact <span style="margin-left: 3%; font-weight: 450; color: black;">{{propertyDetails?.ownerContactNumber}}</span>
+                    </div>
+                </div>
+                <div class="mat-h2" fxFlex="18%">
+                    <div style="margin-left: 7%;">
+                        {{propertyDetails?.roomType}}
+                    </div>
+                    <div style="font-weight: 500; color: #666;">
+                        Room Type
+                    </div>
+                </div>
+                <div class="mat-h2" fxLayout="column" fxFlex="11%">
+                    <div style="margin-left: 9%;">
+                        <i class="fa fa-rupee" style="font-size:15px"></i>{{propertyDetails?.expectedRent}}
+                    </div>
+                    <div style="font-weight: 500; color: #666;">
+                        Rent/Month
+                    </div>
+                </div>
+                <div class="mat-h2" fxLayout="column" fxFlex="12.5%">
+                    <div>
+                        <i class="fa fa-rupee" style="font-size:15px"></i>{{propertyDetails?.advancedDeposit}}
+                    </div>
+                    <div style="font-weight: 500; color: #666;">
+                        Deposit
+                    </div>
+                </div>
+                <div fxLayout="column" fxFlex="17%">
+                    <div style="margin-left: 2.5%;">
+                        <button mat-raised-button style="padding: 0px 25px; color: white;" type="submit" class="btn">Pay Rent Online</button>
+                    </div>
+                    <!-- <div style=" margin-top: 6%; font-size: 22px;">
+                        <span style="margin-right: 6.5%;" class="fa fa-star checked"></span>
+                        <span style="margin-right: 6.5%;" class="fa fa-star checked"></span>
+                        <span style="margin-right: 6.5%;" class="fa fa-star checked"></span>
+                        <span style="margin-right: 6.5%;" class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                    </div> -->
+                </div>
+                <div style="margin-top: 1.5%;">
+                    <mat-icon style="font-size: 32px; margin-top: 10%; margin-left: 200%;">favorite_border</mat-icon>
+                </div>
+            </div>
+        </div>
+
+        <!-- body -->
+        <div class="body">
+            <div class="horizontal-group">
+                <div class="group left">
+                    <div class="image">
+                        <img mat-card-image [src]="retrivedImage" alt="Profile Picture" style="width: 58vh; height: 50vh;">
+                        <!-- <img style=" width: 58vh; height: 50vh;" src="https://cdn.britannica.com/86/170586-050-AB7FEFAE/Taj-Mahal-Agra-India.jpg"> -->
+                    </div>
+                    <label style="font-size: 16px; font-weight: 700; color: #666;" for="nearByPlace">Near By Places</label>
+                    <div style="margin-bottom: 10px; font-size: 15px; font-weight: 600;" fxLayout="row" fxLayoutGap="5%">
+                        <i style="padding-right: 1%;" class="fas">&#xf276;</i>
+                        <div *ngFor="let place of propertyDetails?.nearByPlace">
+                            {{ place }},
+                        </div>
+                    </div>
+                    <div style="font-size: 15px; font-weight: 600;"><label style="font-size: 16px; font-weight: 700; margin-right: 5%; color: #666;" for="postedon">Posted On</label>{{today}}</div>
+                    <!-- <div style="margin-top: 5px; margin-left: 8%;"><button style="padding: 10px 100px;" type="submit" class="btn">Pay Rent Online</button></div> -->
+                </div>
+                <div class="group right">
+                    <div class="details">
+                        <div class="body-details">
+                            <label for="propertydetails">Property Details</label>
+                            <table class="colour" style="width: 99%;">
+                                <tr>
+                                    <th><i style="padding-right: 5%;" class="fas">&#xf1ad;</i>Room Type</th>
+                                    <th><i style="padding-right: 5%;" class="fas">&#xf7bd;</i>Available For</th>
+                                    <th><i style="padding-right: 5%;" class="fas">&#xf0c0;</i>Preferred Tenant</th>
+                                    <th><i style="padding-right: 5%;" class="fas">&#xf073;</i>Available From</th>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        {{ propertyDetails?.roomType }}
+                                    </td>
+                                    <td>
+                                        {{ propertyDetails?.placeAvailableFor }}
+                                    </td>
+                                    <td>
+                                        {{ propertyDetails?.preferredTenant }}
+                                    </td>
+                                    <td>
+                                        <!-- {{ propertyDetails?.availableFrom | date : 'yyyy-mm-dd'}} -->
+                                        {{formatDate(propertyDetails?.availableFrom)}}
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="body-details">
+                            <label style="margin-top: 1%;" for="facilitiesavailable">Facilities</label>
+                            <table class="colour" style="width: 99%;">
+                                <tr>
+                                    <th><i style="padding-right: 5%;" class="fas">&#xf70c;</i>Gym Availability</th>
+                                    <th><i style="padding-right: 5%;" class="fas">&#xf2e7;</i>Food Availability</th>
+                                    <th><i style="padding-right: 5%;" class="fas">&#xf540;</i>Parking</th>
+                                    <th><i style="padding-right: 5%;" class="fas fa-hands-wash"></i>Room Cleaning</th>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        {{ propertyDetails?.availableAmenities.gym == true? "&#10004;" : "&#10008;" }}
+                                    </td>
+                                    <td>
+                                        {{ propertyDetails?.foodAvailability == true? "&#10004;" : "&#10008;" }}
+                                    </td>
+                                    <td>
+                                        {{propertyDetails?.parking}}
+                                    </td>
+                                    <td>
+                                        {{propertyDetails?.roomCleaningService == true? "&#10004;" : "&#10008;"}}
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="body-details">
+                            <label style="margin-top: 1%;" for="rules">Rules</label>
+                            <table class="colour" style="width: 99%;">
+                                <tr>
+                                    <th><i style="padding-right: 5%;" class="fas">&#xf48d;</i>Smoking</th>
+                                    <th><i style="padding-right: 5%;" class="fas">&#xf79f;</i>Drinking</th>
+                                    <th><i style="padding-right: 5%;" class="fas">&#xf182;</i>Girls Entry</th>
+                                    <th><i style="padding-right: 5%;" class="fas">&#xf6d7;</i>NonVeg</th>
+                                    <th><i style="padding-right: 5%;" class="fas">&#xf4fc;</i>Guardian Stay</th>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        {{ propertyDetails?.rules.smoking == true? "&#10004;" : "&#10008;" }}
+                                    </td>
+                                    <td>
+                                        {{ propertyDetails?.rules.drinking == true? "&#10004;" : "&#10008;" }}
+                                    </td>
+                                    <td>
+                                        {{ propertyDetails?.rules.girlsEntry == true? "&#10004;" : "&#10008;"}}
+                                    </td>
+                                    <td>
+                                        {{ propertyDetails?.rules.nonVeg == true? "&#10004;" : "&#10008;"}}
+                                    </td>
+                                    <td>
+                                        {{ propertyDetails?.rules.guardianStay == true? "&#10004;" : "&#10008;"}}
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="body-details">
+                            <label style="margin-top: 1%;" for="availableamenities">Amenities</label>
+                            <table class="colour" style="width: 99%;">
+                                <tr>
+                                    <th><i style="padding-right: 5%;" class="fas">&#xf26c;</i>CommonTv</th>
+                                    <th><i style="padding-right: 5%;" class="fas">&#xf0e7;</i>Power Backup</th>
+                                    <th><i style="padding-right: 5%;" class="fas">&#xf1eb;</i>Wifi</th>
+                                    <th><i style="padding-right: 5%;" class="fas">&#xf7ad;</i>Refrigerator</th>
+                                    <th><i style="padding-right: 5%;" class="fas">&#xf52a;</i>Lift</th>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        {{ propertyDetails?.availableAmenities.commonTv == true? "&#10004;" : "&#10008;"}}
+                                    </td>
+                                    <td>
+                                        {{ propertyDetails?.availableAmenities.powerBackup == true? "&#10004;" : "&#10008;"}}
+                                    </td>
+                                    <td>
+                                        {{ propertyDetails?.availableAmenities.wifi == true? "&#10004;" : "&#10008;"}}
+                                    </td>
+                                    <td>
+                                        {{ propertyDetails?.availableAmenities.refrigerator == true? "&#10004;" : "&#10008;"}}
+                                    </td>
+                                    <td>
+                                        {{ propertyDetails?.availableAmenities.lift == true? "&#10004;" : "&#10008;"}}
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <!-- <div style="margin-top: 3%; margin-left: 22%;"><button style="padding: 8px 50px;" type="submit" class="btn">Contact Owner</button><button style="padding: 8px 50px; margin-left: 10%;" type="submit" class="btn">Save for Later</button></div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,320 @@
+<div [formGroup]="tenantprofile">
+    <mat-horizontal-stepper class="tenantprofile-container">
+        <!-- basic details -->
+        <mat-step label="Basic Details">
+            <!-- form header -->
+            <div class="form-header">
+                <h1>Basic Details</h1>
+            </div>
+
+            <!-- form body -->
+            <div class="form-body">
+                <!-- Fullname and Contactnumber -->
+                <div class="horizontal-group">
+                    <div class="form-group left">
+                        <label for="fullname" class="label-title">Full name *</label>
+                        <input type="text" id="fullname" class="form-input" placeholder="Enter Your Full Name" required="required" formControlName="fullName" />
+                    </div>
+                    <div class="form-group right">
+                        <label for="contactnumber" class="label-title">Contact number *</label>
+                        <input type="text" id="contactnumber" class="form-input" placeholder="Enter Your Contact Number" required="required" formControlName="contactNumber" />
+                    </div>
+                </div>
+
+                <!-- Age and Gender -->
+                <div class="horizontal-group">
+                    <div class="form-group left">
+                        <label for="age" class="label-title">Age *</label>
+                        <input type="text" id="age" class="form-input" placeholder="Enter Your Age" required="required" formControlName="age" />
+                    </div>
+                    <div class="form-group right">
+                        <label for="gender" class="label-title">Gender *</label>
+                        <select class="form-input" id="gender" formControlName="gender">
+                            <option value="MALE">Male</option>
+                            <option value="FEMALE">Female</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- City and State -->
+                <div class="horizontal-group">
+                    <div class="form-group left">
+                        <label for="city" class="label-title">City *</label>
+                        <input type="text" id="city" class="form-input" placeholder="Enter Your City" required="required" formControlName="city" />
+                    </div>
+                    <div class="form-group right">
+                        <label for="state" class="label-title">State *</label>
+                        <input type="text" id="state" class="form-input" placeholder="Enter Your State" required="required" formControlName="state" />
+                    </div>
+                </div>
+
+                <!-- Profile picture-->
+                <div class="horizontal-group left">
+                    <div class="form-group">
+                        <label for="choose-file" class="label-title">Upload Profile Picture</label>
+                        <br />
+                        <br />
+                        <input type="file" id="choose-file" size="80" formControlName="image" (change)="onFileChanged($event.target.files)" #fileInput />
+                    </div>
+                </div>
+            </div>
+
+            <!-- form-footer -->
+            <div class="form-footer">
+                <button mat-raised-button matStepperNext color="basic">Next</button>
+            </div>
+        </mat-step>
+
+        <!-- personal details -->
+        <mat-step label="Personal Details">
+            <!-- form header -->
+            <div class="form-header">
+                <h1>Personal Details</h1>
+            </div>
+
+            <!-- form body -->
+            <div class="form-body">
+                <!-- hobbies -->
+                <div class="horizontal-group">
+                    <div class="form-group" fxLayout="column" style="margin-bottom: 0%;">
+                        <label for="hobbies" class="label-title">Hobbies *</label>
+                        <mat-form-field fxFlex="100%" appearance="outline">
+                            <mat-chip-list #chipList>
+                                <mat-chip *ngFor="let hobbie of hobbies" [selectable]="selectable" [removable]="removable" (removed)="remove(hobbie)">
+                                    {{ hobbie }}
+                                    <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                                </mat-chip>
+                                <input placeholder="New hobbie..." #hobbieInput [formControl]="hobbieCtrl" [matAutocomplete]="auto" [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur" (matChipInputTokenEnd)="addhobbie($event)"
+                                    formControlName="hobbies" />
+                            </mat-chip-list>
+                            <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+                            </mat-autocomplete>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <!-- passion -->
+                <div class="horizontal-group">
+                    <div class="form-group">
+                        <label for="passion" class="label-title">Passion *</label>
+                        <input type="text" id="passion" class="form-input" placeholder="Enter Your Passion" required="required" formControlName="passion" />
+                    </div>
+                </div>
+
+                <!-- Ambition / Aim -->
+                <div class="horizontal-group">
+                    <div class="form-group">
+                        <label for="ambition/aim" class="label-title">Ambition / Aim *</label>
+                        <input type="text" id="ambition/aim" class="form-input" placeholder="Enter Your Ambition / Aim" required="required" formControlName="ambition" />
+                    </div>
+                </div>
+            </div>
+
+            <!-- form-footer -->
+            <div class="form-footer">
+                <button style="margin-right: 87%" mat-raised-button matStepperPrevious color="basic">
+                    Back
+                </button>
+                <button mat-raised-button matStepperNext color="basic">Next</button>
+            </div>
+        </mat-step>
+
+        <!-- Questionnaire -->
+        <mat-step label="Questionnaire">
+            <!-- form header -->
+            <div class="form-header">
+                <h1>Questionnaire</h1>
+            </div>
+
+            <!-- form body -->
+            <div class="form-body">
+                <!-- language -->
+                <div class="horizontal-group">
+                    <div class="form-group" fxLayout="column" style="margin-bottom: 0%;">
+                        <label for="language" class="label-title">What Languages you can converse in or
+                            understand?</label>
+                        <mat-form-field fxFlex="100%" appearance="outline">
+                            <mat-chip-list #chipList>
+                                <mat-chip *ngFor="let language of languages" [selectable]="selectable" [removable]="removable" (removed)="removelang(language)">
+                                    {{ language }}
+                                    <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                                </mat-chip>
+                                <input placeholder="New language..." #languageInput [formControl]="languageCtrl" [matAutocomplete]="auto" [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur" (matChipInputTokenEnd)="addlang($event)"
+                                    formControlName="language" />
+                            </mat-chip-list>
+                            <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selectedlang($event)">
+                            </mat-autocomplete>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <!-- food type -->
+                <div class="horizontal-group">
+                    <div class="form-group">
+                        <label for="foodtype" class="label-title">Are you Vegetarian or a Non-Vegetarian?</label>
+                    </div>
+                    <div class="input-group">
+                        <label for="vegetarian"><input type="radio" name="foodType" value="vegetarian" id="vegetarian"
+                                formControlName="foodType" />
+                            Vegetarian</label>&nbsp;&nbsp;
+                        <label for="non-vegetarian"><input type="radio" name="foodType" value="non-vegetarian"
+                                id="non-vegetarian" formControlName="foodType" />
+                            Non-Vegetarian</label>
+                    </div>
+                </div>
+                <br />
+
+                <!-- smoke or drink -->
+                <div class="horizontal-group">
+                    <div class="form-group">
+                        <label for="smokeordrink" class="label-title">Do you Smoke or Drink?</label>
+                    </div>
+                    <div class="input-group">
+                        <label for="yes"><input type="radio" name="smokeordrink" value="yes" id="yes"
+                                formControlName="smokeordrink" />
+                            Yes</label>&nbsp;&nbsp;
+                        <label for="no"><input type="radio" name="smokeordrink" value="no" id="no"
+                                formControlName="smokeordrink" />
+                            No</label>
+                    </div>
+                </div>
+                <br />
+
+                <!-- marital status -->
+                <div class="horizontal-group">
+                    <div class="form-group">
+                        <label for="maritalstatus" class="label-title">What's your Marital Status?</label>
+                    </div>
+                    <div class="input-group">
+                        <label for="married"><input type="radio" name="maritalstatus" value="married" id="married"
+                                formControlName="maritalstatus" />
+                            Married</label>&nbsp;&nbsp;
+                        <label for="unmarried"><input type="radio" name="maritalstatus" value="unmarried" id="unmarried"
+                                formControlName="maritalstatus" />
+                            Unmarried</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- form-footer -->
+            <div class="form-footer">
+                <button style="margin-right: 87%" mat-raised-button matStepperPrevious color="basic">
+                    Back
+                </button>
+                <button mat-raised-button matStepperNext color="basic">Next</button>
+            </div>
+        </mat-step>
+
+        <!-- academics/career -->
+        <mat-step label="Academics/Career">
+            <!-- form header -->
+            <div class="form-header">
+                <h1>Academics/Career</h1>
+            </div>
+
+            <!-- form body -->
+            <div class="form-body">
+                <!-- highest/current career stage -->
+                <div class="horizontal-group">
+                    <div class="form-group">
+                        <label for="careerstage" class="label-title">Please select your Highest/Current career
+                            stage:</label>
+                    </div>
+                    <div class="input-group">
+                        <mat-radio-group fxLayout="row" fxLayoutGap="10%" formControlName="careerstage">
+                            <mat-radio-button value="school" fxFlex>School</mat-radio-button>
+                            <mat-radio-button value="college" fxFlex>College</mat-radio-button>
+                            <mat-radio-button value="career" fxFlex>Career</mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+                    <div class="form-body">
+                        <!-- school info -->
+                        <div *ngIf="tenantprofile.value.careerstage == 'school'">
+                            <div class="horizontal-group">
+                                <div class="form-group">
+                                    <label for="schoolname" class="label-title">School name</label>
+                                    <input type="schoolname" id="schoolname" class="form-input" placeholder="Enter Your School Name" required="required" formControlName="schoolName" />
+                                </div>
+                                <div class="form-group left">
+                                    <label for="grade" class="label-title">Grade</label>
+                                    <input type="grade" class="form-input" id="grade" placeholder="Enter Your Grade" required="required" formControlName="schoolgrade" />
+                                </div>
+                                <div class="form-group right">
+                                    <label for="passedout" class="label-title">Passed out</label>
+                                    <select class="form-input" id="passedout" formControlName="schoolpassedout">
+                                        <option value="true">Yes</option>
+                                        <option value="false">No</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-body">
+                        <!-- college info -->
+                        <div *ngIf="tenantprofile.value.careerstage == 'college'">
+                            <div class="horizontal-group">
+                                <div class="form-group">
+                                    <label for="collegename" class="label-title">College name</label>
+                                    <input type="collegename" id="collegename" class="form-input" placeholder="Enter Your College Name" required="required" formControlName="collegeName" />
+                                </div>
+                                <div class="form-group left">
+                                    <label for="degree" class="label-title">Degree</label>
+                                    <input type="degree" class="form-input" id="degree" placeholder="Enter Your Degree" required="required" formControlName="collegedegree" />
+                                </div>
+                                <div class="form-group right">
+                                    <label for="passedout" class="label-title">Passed out</label>
+                                    <select class="form-input" id="passedout" formControlName="collegepassedout">
+                                        <option value="true">Yes</option>
+                                        <option value="false">No</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-body">
+                        <!-- career info -->
+                        <div *ngIf="tenantprofile.value.careerstage == 'career'">
+                            <div class="horizontal-group">
+                                <div class="form-group left">
+                                    <label for="companyname" class="label-title">Company name</label>
+                                    <input type="companyname" id="companyname" class="form-input" placeholder="Enter Your Company Name" required="required" formControlName="companyName" />
+                                </div>
+                                <div class="form-group right">
+                                    <label for="profession" class="label-title">Profession</label>
+                                    <input type="profession" class="form-input" id="profession" placeholder="Enter Your Profession" required="required" formControlName="profession" />
+                                </div>
+                            </div>
+                            <div class="horizontal-group">
+                                <div class="form-group left">
+                                    <label for="occupation" class="label-title">Occupation</label>
+                                    <input type="occupation" id="occupation" class="form-input" placeholder="Enter Your Occupation" required="required" formControlName="occupation" />
+                                </div>
+                                <div class="form-group right">
+                                    <label for="experience" class="label-title">Experience</label>
+                                    <select class="form-input" id="experience" formControlName="experience">
+                                        <option value="less than 2">less than 2 year</option>
+                                        <option value="2-10">2-10 Years</option>
+                                        <option value="11-20">11-20 Years</option>
+                                        <option value="20+">20+ years</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- form-footer -->
+            <div class="form-footer">
+                <button style="margin-right: 87%" mat-raised-button matStepperPrevious color="basic">
+                    Back
+                </button>
+                <button mat-raised-button matStepperNext color="primary" (click)="saveProfile()" [disabled]="tenantprofile.invalid">
+                    Finish
+                </button>
+            </div>
+        </mat-step>
+    </mat-horizontal-stepper>
+</div>

@@ -1,0 +1,128 @@
+<div>
+    <div class="body">
+        <div class="horizontal-group">
+            <div class="group left">
+                <div class="filter">
+                    <div class="text">
+                        <h3 style="font-weight: bold; font-size: 20px;">Groups</h3>
+                    </div>
+                    <div style="margin-left: 13%;">
+                        <div *ngFor="let group of tenantGroupList" style="margin-bottom: 0.6%;">
+                            <h3 class="send" (click)="getGroupDetails(group?.groupName)"><i style="margin-right: 2%;" class="fa">&#xf0c0;</i>{{group?.groupName}}</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="group right">
+                <div class="details">
+                    <div fxLayout="row">
+                        <div style="margin-left: 3%; margin-top: 0.5%;" fxFlex="41%">
+                            <!-- <h1>Group Member<i class='fas fa-user-alt' style='font-size:20px; margin-left: 3%; margin-top: 0.5;'></i></h1> -->
+                            <h1><i style="padding-right: 3%; font-size: 22px;" class="fa">&#xf0c0;</i>{{groupDetails?.groupName}}</h1>
+                        </div>
+                        <!-- <div fxLayout="column" fxFlex="14%" style="margin-top: 0.5%; margin-left: 40%;">
+                            <h1><i style="padding-right: 5%; font-size: 22px;" class="fa">&#xf0c0;</i>{{groupchat?.groupName}}</h1>
+                        </div> -->
+                        <div style="margin-left: 50%; margin-top: 1%;" fxFlex="5%">
+                            <i style='font-size:24px' class='fas'>&#xf2f5;</i>
+                        </div>
+                    </div>
+                </div>
+                <div class="list">
+                    <div class="card">
+                        <div fxLayout="row">
+                            <div fxFlex="10%" class="img">
+                                <img mat-card-image [src]="retrivedImage" alt="Profile Picture" style=" width: 15vh; height: 12vh;">
+                            </div>
+                            <div style="margin-left: 2%;" fxLayout="column" fxFlex="25%">
+                                <div class="mat-h2" style="margin-top: 5%;">
+                                    {{profileDetails?.fullName | titlecase}}
+                                </div>
+                                <div class="mat-subtitle">
+                                    {{profileDetails?.contactNumber}}
+                                </div>
+                                <div style="font-weight: 500; font-size: 14px;">
+                                    {{profileDetails?.email}}
+                                </div>
+                            </div>
+                            <div class="mat-h3" fxFlex="10%">
+                                <div style="font-weight: 600; margin-left: 9%; margin-top: 18%;">
+                                    {{profileDetails?.age}}
+                                </div>
+                                <div style="color: #666; margin-left: 5%;">
+                                    Age
+                                </div>
+                            </div>
+                            <div class="mat-h3" fxLayout="column" fxFlex="12%">
+                                <div style="font-weight: 600; margin-left: 2%; margin-top: 13%;">
+                                    {{profileDetails?.gender}}
+                                </div>
+                                <div style="color: #666;">
+                                    Gender
+                                </div>
+                            </div>
+                            <div class="mat-h3" fxLayout="column" fxFlex="16%">
+                                <div style="font-weight: 600; margin-top: 9%; margin-left: 7%;">
+                                    {{profileDetails?.questionaire.maritalStatus | titlecase}}
+                                </div>
+                                <div style="color: #666;">
+                                    Marital Status
+                                </div>
+                            </div>
+                            <div fxLayout="column" fxFlex="15%" style="margin-top: 3.5%;">
+                                <button mat-raised-button style="padding: 0px 20px; color: white;" type="submit" class="btn" (click)="profile(profileDetails?.email)">View Profile</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chat-head">
+                        <div fxLayout="row">
+                            <div style="margin-left: 3%; margin-top: 0.5%;" fxFlex="40%">
+                                <h1>Group Chat<i class='fas fa-comment-dots' style='font-size:20px; margin-left: 5%; margin-top: 0.5;'></i></h1>
+                            </div>
+                            <div fxLayout="row" fxLauoutGap="3%" fxFlex="50%" style="margin-top: 0.5%; margin-left: 60%;">
+                                <!-- <h1>
+                                    <i style="padding-right: 5%; font-size: 22px;" class="fa">&#xf0c0;
+                                </i> {{groupDetails?.groupName}}
+                                </h1> -->
+                                <i class="fas fa-undo-alt reset" style="font-size:18px; margin-top: 2.5%; margin-left: 3%;" (click)=" getGroupDetails(groupDetails?.groupName)">
+                                    </i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chat-body">
+                        <div class="scroll">
+                            <div *ngFor="let chat of groupDetails?.messageBody">
+                                <div *ngIf="!(chat?.messageSendBy==loggedInUser)">
+                                    <div class="item-left" fxFlex="50%">
+                                        <span style="padding: 5px; border-radius: 5px; margin-bottom: 0.3%; background-color:rgb(138, 202, 188)">
+                                    {{chat.message}}
+                                    </span>
+                                    </div>
+                                </div>
+                                <div *ngIf="chat?.messageSendBy==loggedInUser">
+                                    <div class="item-right">
+                                        <span style="padding: 5px; border-radius: 5px; margin-bottom: 0.3%; background-color: rgb(206, 238, 231);">
+                                    {{chat.message}}
+                                    </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chat-base">
+                        <div fxLayout="row">
+                            <div style="margin-left: 2%; margin-top: 1%;" fxFlex="5%">
+                                <i style="font-size: 25px;" class='far fa-grin-alt'></i>
+                            </div>
+                            <div [formGroup]="replyForm" fxLayout="column" fxFlex="90%" style="margin-top: 0.6%;">
+                                <input style="height: 33px; border-radius: 3px; border: 0.5px solid rgb(41, 39, 39);" type="text" placeholder="Type your message here..." formControlName="reply" />
+                            </div>
+                            <div class="send" style="margin-left: 2%; margin-top: 1%;" fxFlex="5%">
+                                <i style="font-size:25px;" class="fa" (click)="addChat(groupDetails?.groupName)">&#xf1d8;</i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

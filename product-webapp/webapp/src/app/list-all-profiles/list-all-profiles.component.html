@@ -1,0 +1,31 @@
+<div>
+    <div class="body">
+        <div class="horizontal-group">
+            <div class="group right">
+                <div class="details">
+                    <div fxLayout="row">
+                        <div fxLayout="column" fxFlex="25%">
+                            <div style="margin-top: 7%; margin-left: 10%;" class="mat-h2">
+                                <h1 style="font-weight: 700; font-size: 30px;">Interested Tenants</h1>
+                            </div>
+                        </div>
+                        <div fxLayout="column" fxFlex="40%">
+                            <div style="margin-top: 4.5%; margin-left: 5%;" class="mat-h2">
+                                [{{totalLength}}] Matching Profiles
+                            </div>
+                        </div>
+                        <!-- <div style="margin-top: 2%;">
+                            <pagination-controls class="text-center my-pagination" (pageChange)="page = $event"></pagination-controls>
+                        </div> -->
+                    </div>
+                </div>
+                <div class="list">
+                    <!-- | paginate:{itemsPerPage: 4, currentPage: page, totalItems: totalLength}" (click)="getProperty(property)" -->
+                    <app-tenant-card class="card-left" *ngFor="let profile of profileArray" [profile]="profile">
+
+                    </app-tenant-card>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

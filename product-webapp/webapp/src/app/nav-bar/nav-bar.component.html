@@ -1,0 +1,66 @@
+<mat-toolbar class="toolbar">
+    <mat-toolbar-row>
+
+        <button mat-icon-button>
+      <mat-icon (click)="sidenav.toggle();" style="color: white;">menu</mat-icon>
+    </button>
+
+
+        <button>
+      <img src="../../assets/logo.ico" alt="logo" class="logo">
+    </button>
+
+
+        <div style="color: white; font-family: Lucida Console; font-size: 2em; margin-top: 4px;" (click)="goToHome()">RentMates</div>
+
+
+        <span class="example-spacer"></span>
+
+
+        <div style="color: white;">
+            {{userName | titlecase}}
+        </div>
+
+        <button mat-button [matMenuTriggerFor]="menu"><button mat-icon-button class="example-icon"
+        aria-label="Example icon-button with menu icon">
+        <mat-icon style="color: white;">person</mat-icon>
+      </button></button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item routerLink="/home/userprofile">
+        <mat-icon>account_box</mat-icon>
+        Profile
+      </button>
+            <button mat-menu-item (click)="logout()">
+        <mat-icon>exit_to_app</mat-icon>
+        Logout
+      </button>
+        </mat-menu>
+
+    </mat-toolbar-row>
+</mat-toolbar>
+
+
+<mat-sidenav-container>
+
+    <mat-sidenav #sidenav>
+        <mat-nav-list>
+            <a mat-list-item routerLink="/">Home </a>
+            <a mat-list-item routerLink="{{link}}" *ngIf="role=='OWNER'" (click)="sidenav.close()">Post property</a>
+            <a mat-list-item *ngIf="role=='TENANT'" routerLink="/home/recommendation" (click)="sidenav.close()">Search Roommates</a>
+            <a mat-list-item *ngIf="role=='TENANT'" routerLink="{{profile}}" (click)="sidenav.close()">Edit Profile</a>
+            <a mat-list-item routerLink="/home/properties" (click)="sidenav.close()">Properties</a>
+            <a mat-list-item routerLink="/home/tenantgroupchat" *ngIf="role=='TENANT'" (click)="sidenav.close()">Groups</a>
+            <a mat-list-item routerLink="/home/profiles" *ngIf="role=='TENANT'" (click)="sidenav.close()">Interested Tenants</a>
+
+        </mat-nav-list>
+
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <div style="height: 88vh;">
+
+            <router-outlet></router-outlet>
+        </div>
+
+    </mat-sidenav-content>
+
+</mat-sidenav-container>

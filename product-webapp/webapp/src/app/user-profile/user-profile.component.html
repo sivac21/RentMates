@@ -1,0 +1,174 @@
+<div class="container-fluid">
+
+    <div fxLayout="row">
+        <div fxLayout="column" fxFlex="30%" fxLayoutAlign="center center" fxLayoutGap="2%">
+            <img mat-card-image [src]="retrivedImage" alt="Profile Picture" class="profile-image">
+
+
+        </div>
+
+
+        <div fxLayout="column" fxFlex="30%">
+            <div class="row" fxLayoutAlign="left">
+                <h1 class="name-age-header-tag-styling nunito-font">
+                    {{profileDetails?.fullName}}, {{profileDetails?.age}}</h1>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="left">
+                <div fxLayout="column" fxflex="20%">
+                    <mat-icon class="info-icons-styling"> local_post_office
+                    </mat-icon>
+                </div>
+                <div fxLayout="column" fxflex="80%">
+                    <p class="mat-headline info-p-styling">
+                        {{profileDetails?.email}}
+                    </p>
+                </div>
+            </div>
+            <div fxLayout="row">
+                <div fxLayout="column" fxflex="20%">
+                    <mat-icon class="info-icons-styling"> local_phone
+                    </mat-icon>
+                </div>
+                <div fxLayout="column" fxflex="80%">
+                    <p class="mat-headline info-p-styling">
+                        {{profileDetails?.contactNumber}}
+                    </p>
+                </div>
+            </div>
+            <div fxLayout="row" fxLayoutGap="5%">
+                <div fxLayout="column">
+                    <img src="https://img.icons8.com/ios-glyphs/30/000000/user-male--v1.png" #tooltip="matTooltip" matTooltip="Male" *ngIf="profileDetails?.gender=='MALE'" />
+                    <img src="https://img.icons8.com/fluency-systems-filled/30/000000/women-age-group-5.png" #tooltip="matTooltip" matTooltip="Female" *ngIf="profileDetails?.gender=='FEMALE'" />
+                </div>
+                <div fxLayout="column">
+                    <img src="https://img.icons8.com/ios/30/000000/newlyweds.png" #tooltip="matTooltip" matTooltip="Married" *ngIf="profileDetails?.questionaire.maritalStatus=='married'" class="icon-display-0-point-9" />
+                    <img src="https://img.icons8.com/external-becris-lineal-becris/64/000000/external-single-finance-taxation-becris-lineal-becris.png" #tooltip="matTooltip" matTooltip="Not married" *ngIf="profileDetails?.questionaire.maritalStatus=='unmarried'" class="icon-display-0-point-8"
+                    />
+                </div>
+            </div>
+        </div>
+        <div fxLayout="column" fxFlex="30%" fxLayoutAlign=" ">
+            <div fxLayout="row">
+                <h1 class="mat-headline">Languages</h1>
+            </div>
+            <div fxLayout="row">
+                <div fxLayout="column">
+                    <mat-chip-list #chipList>
+                        <mat-chip *ngFor="let language of profileDetails?.questionaire.language">
+                            {{ language }}
+                        </mat-chip>
+                    </mat-chip-list>
+                </div>
+            </div>
+            <div>
+                <hr>
+            </div>
+            <div fxLayout="row">
+                <h1 class="mat-headline">Hobbies</h1>
+            </div>
+            <div fxLayout="row">
+                <div fxLayout="column">
+                    <mat-chip-list #chipList>
+                        <mat-chip *ngFor="let hobby of profileDetails?.hobbies">
+                            {{ hobby }}
+                        </mat-chip>
+                    </mat-chip-list>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div>
+        <hr>
+    </div>
+    <div fxLayout="row">
+        <div fxLayout="column" fxFlex="30%" fxLayoutAlign="center center">
+            <img src="https://cdni.iconscout.com/illustration/premium/thumb/profile-insights-2739578-2280885.png" alt="" style="width: 250px; margin-top: -40px;">
+        </div>
+        <div fxLayout="column" fxFlex="30%" fxLayoutAlign="right right">
+            <div fxLayout="row">
+                <div fxLayout="column" fxflex="20%">
+                    <mat-icon class="info-icons-styling"> location_city
+                    </mat-icon>
+                </div>
+                <div fxLayout="column" fxflex="80%">
+                    <p class="mat-headline info-p-styling">
+                        {{profileDetails?.city}}, {{profileDetails?.state}}
+                    </p>
+                </div>
+            </div>
+            <div fxLayout="row" *ngIf="profileDetails?.school.schoolName!=''">
+                <div fxLayout="column" fxflex="20%">
+                    <mat-icon class="info-icons-styling"> table_chart
+                    </mat-icon>
+                </div>
+                <div fxLayout="column" fxflex="80%">
+                    <p class="mat-headline info-p-styling">
+                        {{profileDetails?.school.schoolName}}
+                    </p>
+                </div>
+            </div>
+            <div fxLayout="row" *ngIf="profileDetails?.college.collegeName!=''">
+                <div fxLayout="column" fxflex="20%">
+                    <mat-icon class="info-icons-styling"> account_balance
+                    </mat-icon>
+                </div>
+                <div fxLayout="column" fxflex="80%">
+                    <p class="mat-headline info-p-styling">
+                        {{profileDetails?.college.collegeName}}
+                    </p>
+                </div>
+            </div>
+            <div fxLayout="row" *ngIf="!(profileDetails?.college.degree=='')">
+                <div fxLayout="column" fxflex="20%">
+                    <mat-icon class="info-icons-styling"> school</mat-icon>
+                </div>
+                <div fxLayout="column" fxflex="80%">
+                    <p class="mat-headline info-p-styling">
+                        {{profileDetails?.college.degree}} degree
+                    </p>
+                </div>
+            </div>
+            <div fxLayout="row" *ngIf="!(profileDetails?.career.companyName=='')">
+                <div fxLayout="column" fxflex="20%">
+                    <mat-icon class="info-icons-styling"> business_center
+                    </mat-icon>
+                </div>
+                <div fxLayout="column" fxflex="80%">
+                    <p class="mat-headline info-p-styling">
+                        {{profileDetails?.career.companyName}}, {{profileDetails?.career.occupation}}
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div fxLayout="column" fxFlex="30%">
+            <div fxLayout="row" fxLayoutGap="2%">
+                <h2 class="">Food-Habits</h2>
+                <div>
+                    <img #tooltip="matTooltip" matTooltip="Vegetarian" src="https://img.icons8.com/color/30/000000/vegetarian-food-symbol.png" *ngIf="profileDetails?.questionaire.foodType=='vegetarian'" />
+                    <img #tooltip="matTooltip" matTooltip="non-vegetarian" src="https://img.icons8.com/color/30/000000/non-vegetarian-food-symbol.png" *ngIf="profileDetails?.questionaire.foodType=='non-vegetarian'" />
+                </div>
+                <div>
+                    <img #tooltip="matTooltip" matTooltip="Drinks" src="https://img.icons8.com/external-kiranshastry-lineal-kiranshastry/30/000000/external-drink-bar-kiranshastry-lineal-kiranshastry.png" *ngIf="profileDetails?.questionaire.drinkingSmoking=='yes'" />
+                    <img #tooltip="matTooltip" matTooltip="Doesn't Drink" src="https://img.icons8.com/ios-filled/30/000000/no-alcohol.png" *ngIf="profileDetails?.questionaire.drinkingSmoking=='no'" />
+                </div>
+                <div>
+                    <img #tooltip="matTooltip" matTooltip="Smokes" src="https://img.icons8.com/ios/30/000000/smoking.png" *ngIf="profileDetails?.questionaire.drinkingSmoking=='yes'" />
+                    <img #tooltip="matTooltip" matTooltip="Doesn't smoke" src="https://img.icons8.com/ios/30/000000/no-smoking.png" *ngIf="profileDetails?.questionaire.drinkingSmoking=='no'" />
+                </div>
+            </div>
+            <div fxLayout="row">
+                <h2>Ambition: </h2>
+                <p class="mat-title" style="color: rgb(128, 128, 128);">
+                    {{profileDetails?.ambition}}</p>
+            </div>
+            <div fxLayout="row">
+                <h2 class="mat-headline">Passion: </h2>
+
+                <p class="mat-title" style="color: rgb(128, 128, 128);">
+                    {{profileDetails?.passion}}</p>
+            </div>
+        </div>
+    </div>
+
+</div>

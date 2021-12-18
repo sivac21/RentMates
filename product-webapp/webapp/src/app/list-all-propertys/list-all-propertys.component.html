@@ -1,0 +1,167 @@
+<div>
+    <div class="body">
+        <div class="horizontal-group">
+            <div class="group left">
+                <div class="filter">
+                    <div class="text">
+                        <div>
+                            <h3 style="font-weight: bold; font-size: 20px;">Filter your Search<span class="reset"><i class="fas fa-undo-alt" style="font-size:18px; margin-left: 10%;" (click)="resetSearch()"></i></span></h3>
+                        </div>
+                        <span [formGroup]="searchForm" class="search">
+                            <input type="text" placeholder="Search.." formControlName="searchWord">
+                            <span>
+                                <button mat-mini-fab class="button" (click)="searchProperties()">
+                                    <i class="fa fa-search" style="font-size:15px;"></i>
+                                  </button>
+                            </span>
+                        </span>
+                        <div style="margin-top: 15%;">
+                            <img mat-card-image src="../../assets/d_hp_rent_agreement.webp" alt="Profile Picture" style=" width: 45vh; height: 30vh;">
+                        </div>
+                        <div style="margin-top: 6%;">
+                            <img mat-card-image src="../../assets/img.png" alt="Profile Picture" style=" width: 44vh; height: 16vh;">
+                        </div>
+                        <!-- <h3 style="font-weight: bold; font-size: 20px;">Filter your Search<i class="fas fa-undo-alt" style=" margin-left: 10%; font-size:18px"></i><i class="fa fa-filter" style=" margin-left: 5%; font-size:20px"></i></h3>
+                        <label style="font-weight: 600;">PG For</label>
+                        <div class="input-group">
+                            <label style="margin-right: 26.5%;" for="male"><input type="radio" name="pgFor" value="male"
+                                    id="male" />&nbsp;Male</label>
+                            <label for="female"><input type="radio" name="pgFor" value="female"
+                                    id="female" />&nbsp;Female</label>
+                        </div>
+                        <label style="font-weight: 600;">Preferred For</label>
+                        <div class="input-group">
+                            <label style="margin-right: 20%;" for="student"><input type="checkbox" name="preferredFor"
+                                    value="student" id="student" />&nbsp;Student</label>
+                            <label for="professional"><input type="checkbox" name="preferredFor" value="professional"
+                                    id="professional" />&nbsp;Professional</label>
+                        </div>
+                        <label style="font-weight: 600;">Budget</label>
+                        <div class="input-group" style="margin-bottom: 5%;">
+                            <input style="width: 25%; height: 75%;" type="number" name="minbudget" placeholder="Min" />&nbsp;&nbsp;&nbsp;
+                            <input style="width: 25%; height: 75%;" type="number" name="maxbudget" placeholder="Max" />
+                        </div>
+                        <label style="font-weight: 600;">Room Type</label>
+                        <div class="input-group">
+                            <label style="margin-right: 9%;" for="singleroom"><input type="checkbox" name="roomType"
+                                    value="singleroom" id="singleroom" />&nbsp;Single Room</label>
+                            <label for="doubleroom"><input type="checkbox" name="roomType" value="doubleroom"
+                                    id="doubleroom" />&nbsp;Double Room</label>
+                        </div>
+                        <div style="margin-bottom: 2%;" class="input-group">
+                            <label style="margin-right: 10%;" for="tripleroom"><input type="checkbox" name="roomType"
+                                    value="tripleroom" id="tripleroom" />&nbsp;Triple Room</label>
+                            <label for="fourroom"><input type="checkbox" name="roomType" value="fourroom"
+                                    id="fourroom" />&nbsp;Four room</label>
+                        </div>
+                        <h3 style="font-weight: bold; font-size: 20px;">Advanced Filters</h3>
+                        <div class="input-group">
+                            <label style="margin-right: 11%;" for="food"><input type="checkbox" name="food"
+                                    value="food" id="food" />&nbsp;Food Availability</label>
+                        </div>
+                        <div class="input-group">
+                            <label for="parking"><input type="checkbox" name="parking" value="parking"
+                                    id="parking" />&nbsp;Parking Availability</label>
+                        </div> -->
+                        <!-- <label style="font-weight: 600;">Based on Rating</label>
+                        <div class="input-group">
+                            <label style="margin-right: 10%;" for="5star"><input type="checkbox" name="rating"
+                                    value="5star" id="5star" />&nbsp;<span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span></label>
+                            <label for="4star"><input type="checkbox" name="rating" value="4star"
+                                    id="4star" />&nbsp;<span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star"></span></label>
+                        </div>
+                        <div class="input-group">
+                            <label for="3star"><input type="checkbox" name="rating" value="3star"
+                                    id="3star" />&nbsp;<span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star"></span></label>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+            <div class="group right">
+                <div class="details">
+                    <div fxLayout="row">
+                        <div fxLayout="column" fxFlex="63%">
+                            <div style="margin-top: 4%; margin-left: 5%;" class="mat-h2">
+                                [{{totalLength}}] Matching Properties
+                            </div>
+                        </div>
+                        <div style="margin-top: 3%;">
+                            <pagination-controls class="text-center my-pagination" (pageChange)="page = $event"></pagination-controls>
+                        </div>
+                        <!-- <div style="margin-left: 11%; margin-top: 2%;">
+                            <button mat-raised-button type="submit" class="btn">Filter</button>
+                        </div> -->
+                    </div>
+                </div>
+                <div class="list">
+                    <div class="card" *ngFor="let property of propertyArray | paginate:{itemsPerPage: 4, currentPage: page, totalItems: totalLength}" (click)="getProperty(property)">
+                        <div class="property-card" fxLayout="row">
+                            <div fxFlex="15%" class="img">
+                                <app-property-card [property]="property"></app-property-card>
+
+                            </div>
+                            <div fxLayout="column" fxFlex="25%">
+                                <div class="mat-h2">
+                                    {{property?.propertyName}}
+                                </div>
+                                <div class="mat-subtitle">
+                                    {{property?.city}}, {{property?.state}}
+                                </div>
+                                <div style="margin-top: 3%; font-weight: 500; font-size: 14px;">
+                                    Contact <span style="margin-left: 3%; color: black;">{{property?.ownerContactNumber}}</span>
+                                </div>
+                            </div>
+                            <div class="mat-h3" fxFlex="15%">
+                                <div style="font-weight: 600; margin-left: 9%;">
+                                    {{property?.roomType}}
+                                </div>
+                                <div style="color: #666;">
+                                    Room Type
+                                </div>
+                            </div>
+                            <div class="mat-h3" fxLayout="column" fxFlex="15%">
+                                <div style="font-weight: 600; margin-left: 9%">
+                                    <i class="fa fa-rupee" style="font-size:13px"></i>{{property?.expectedRent}}
+                                </div>
+                                <div style="color: #666;">
+                                    Rent/Month
+                                </div>
+                            </div>
+                            <div class="mat-h3" fxLayout="column" fxFlex="13%">
+                                <div style="font-weight: 600;">
+                                    <i class="fa fa-rupee" style="font-size:13px"></i>{{property?.advancedDeposit}}
+                                </div>
+                                <div style="color: #666;">
+                                    Deposit
+                                </div>
+                            </div>
+                            <!-- <div fxLayout="column" fxFlex="9%">
+                                <div>
+                                    <mat-icon style="font-size: 30px; margin-top: 10%;">star_border</mat-icon>
+                                </div>
+                                <div style="margin-left: 5%;">
+                                    4.5
+                                </div>
+                            </div> -->
+                            <div style="margin-left: 9%;">
+                                <mat-icon style="font-size: 32px; margin-top: 71%;">favorite_border</mat-icon>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

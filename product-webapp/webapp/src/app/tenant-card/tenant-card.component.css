@@ -1,0 +1,55 @@
+/*---------------------------------------*/
+
+
+/* Font */
+
+
+/*---------------------------------------*/
+
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+/* body {
+    background: linear-gradient(to right, #78a7ba 0%, #385D6C 50%, #78a7ba 99%);
+} */
+
+
+/*---------------------------------------*/
+
+
+/* Header */
+
+
+/*---------------------------------------*/
+
+.card {
+    height: 100px;
+    width: 98%;
+    margin-left: 1%;
+    margin-top: 1%;
+    border: 1px solid #cccccc;
+}
+
+.profile-card {
+    margin-left: 10px;
+    margin-top: 10px;
+    /* border: 1px solid #cccccc; */
+}
+
+.colour {
+    background-color: #F6F6F6;
+    border-radius: 5px;
+}
+
+.mat-h2 {
+    margin-bottom: 0px;
+}
+
+.btn1 {
+    background-color: #4B8886;
+    padding: 0px 20px;
+}
+
+.btn2 {
+    background-color: #ad4949;
+    padding: 0px 22.5px;
+}

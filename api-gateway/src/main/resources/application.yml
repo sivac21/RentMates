@@ -1,0 +1,68 @@
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+    register-with-eureka: true
+    fetch-registry: true
+
+server:
+  port: 8080
+
+spring:
+  application:
+    name: gateway-service
+  cloud:
+    gateway:
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods: "*"
+            allowedHeaders: "*"
+            exposedHeaders: "*"
+      routes:
+        - id: property-owner-service
+          uri: lb://property-owner-service
+          predicates:
+            - Path=/property-owner-service/**
+          filters:
+            - RewritePath=/property-owner-service(?<segment>/?.*), $\{segment}
+
+
+        - id: tenant-matchmaking-service
+          uri: lb://tenant-matchmaking-service
+          predicates:
+            - Path=/tenant-matchmaking-service/**
+          filters:
+            - RewritePath=/tenant-matchmaking-service(?<segment>/?.*), $\{segment}
+
+
+        - id: tenant-profile-service
+          uri: lb://tenant-profile-service
+          predicates:
+            - Path=/tenant-profile-service/**
+          filters:
+            - RewritePath=/tenant-profile-service(?<segment>/?.*), $\{segment}
+
+
+        - id: user-authentication-management-service
+          uri: lb://user-authentication-management-service
+          predicates:
+            - Path=/user-authentication-management-service/**
+          filters:
+            - RewritePath=/user-authentication-management-service(?<segment>/?.*), $\{segment}
+
+        - id: email-service
+          uri: lb://email-service
+          predicates:
+            - Path=/email-service/**
+          filters:
+            - RewritePath=/email-service(?<segment>/?.*), $\{segment}
+
+        - id: product-webapp
+          uri: lb://product-webapp
+          predicates:
+            - Path=/**
+          filters:
+            - RewritePath=(?<segment>/?.*), $\{segment}
+

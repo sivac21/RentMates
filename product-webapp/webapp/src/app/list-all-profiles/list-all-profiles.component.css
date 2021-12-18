@@ -1,0 +1,76 @@
+/*---------------------------------------*/
+
+
+/* Font */
+
+
+/*---------------------------------------*/
+
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+/* body {
+    background: linear-gradient(to right, #78a7ba 0%, #385D6C 50%, #78a7ba 99%);
+} */
+
+
+/*---------------------------------------*/
+
+
+/* Header */
+
+
+/*---------------------------------------*/
+
+.body {
+    /* margin-left: 8px; */
+}
+
+.group {
+    margin-bottom: 0px;
+}
+
+.horizontal-group .right {
+    width: 100%;
+}
+
+.filter {
+    height: 529px;
+    width: 300px;
+    border: 1px solid #cccccc;
+    background-color: #eeeeee;
+}
+
+.details {
+    height: 80px;
+    width: 100%;
+    border: 1px solid #cccccc;
+    background-color: #eeeeee;
+}
+
+.detail-head {
+    margin-left: 1%;
+    margin-top: 2.5%;
+}
+
+.list {
+    height: 449px;
+    width: 100%;
+    border: 1px solid #cccccc;
+    background-color: #eeeeee;
+}
+
+.card-left {
+    height: 100px;
+    float: left;
+    width: 48.5%;
+    margin-left: 1%;
+    margin-top: 0.75%;
+    border-radius: 5px;
+    background-color: white;
+    border: 1px solid #cccccc;
+}
+
+.colour {
+    background-color: #F6F6F6;
+    border-radius: 5px;
+}
